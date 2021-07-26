@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sridharassudhanPROMTask-2</title>
+    
+</head>
+<body>
+    <h1 class="countdown"></h1>
+    <script>
+        
+const countdown = document.querySelector(".countdown");
+
+const msg = (num) =>
+  new Promise((resolve, reject) => {
+    if (num) {
+      setTimeout(() => {
+        console.log(num);
+        countdown.innerText = num;
+        resolve(num);
+      }, 200);
+    } else {
+      reject(num);
+    }
+  });
+async function showMessage() {
+  try {
+    let three = await msg(3);
+    let two = await msg(--three);
+    let one = await msg(--two);
+    let zero = await msg(--one);
+  } catch (err) {
+    console.log("error", err);
+    countdown.innerText = "(:HAVE A HAPPY DAY:)";
+  }
+
+  let five = await msg(3);
+}
+
+showMessage();
+
+    </script>
+</body>
+
